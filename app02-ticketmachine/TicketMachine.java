@@ -25,23 +25,30 @@ public class TicketMachine
     private int total = 0;
 
     // Available tickets at this machine
-    private Map<String, Ticket> availableTickets = new HashMap();
+    private final Map<String, Ticket> availableTickets = new HashMap();
 
+    // Ticket constants
+    public static final Ticket TICKET_AYLESBURY = new Ticket("Aylesbury", 220);
+    public static final Ticket TICKET_AMERSHAM = new Ticket("Amersham", 300);
+    public static final Ticket TICKET_HIGH_WYCOMBE = new Ticket("High Wycombe", 330);
+    
     /**
      * Create a machine that issues tickets of the given price.
      */
     public TicketMachine()
     {
-        this.addTicket(new Ticket("Aylesbury", 220));
-        this.addTicket(new Ticket("Amersham", 300));
-        this.addTicket(new Ticket("High Wycombe", 330));
+        this.addTicket(TicketMachine.TICKET_AYLESBURY
+                     , TicketMachine.TICKET_AMERSHAM
+                     , TicketMachine.TICKET_HIGH_WYCOMBE);
     }
     
     /**
      * Adds a ticket to this machine.
      */
-    private void addTicket(Ticket ticket) {
-        this.availableTickets.put(ticket.getDestination(), ticket);
+    private void addTicket(Ticket ...tickets) {
+        for (Ticket ticket : tickets) {
+            this.availableTickets.put(ticket.getDestination(), ticket);
+        }
     }
 
     /**
