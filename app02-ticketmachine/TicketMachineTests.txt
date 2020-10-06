@@ -1,0 +1,58 @@
+TicketMachine ticketMachine = new TicketMachine();
+ticketMachine.printAvailableTickets();
+Destination: Amersham
+Price: £3.00
+
+Destination: High Wycombe
+Price: £3.30
+
+Destination: Aylesbury
+Price: £2.20
+
+ticketMachine.printTicket("Aylesbury");
+You must insert at least: 220 more cents.
+ticketMachine.insertCoin(Coin.TWO_POUNDS);
+Entered £2.00, current balance is £2.00.
+ticketMachine.insertCoin(Coin.TWENTY_PENCE);
+Entered £0.20, current balance is £2.20.
+ticketMachine.printTicket("Aylesbury");
+##################
+# The BlueJ Line
+# Aylesbury
+# 2020-10-06 at 16:26:08
+# £2.20
+# 
+##################
+
+ticketMachine.insertCoin(Coin.TWO_POUNDS);
+Entered £2.00, current balance is £2.00.
+ticketMachine.insertCoin(Coin.TWO_POUNDS);
+Entered £2.00, current balance is £4.00.
+ticketMachine.printTicket("High Wycombe");
+##################
+# The BlueJ Line
+# High Wycombe
+# 2020-10-06 at 16:26:45
+# £3.30
+# 
+##################
+
+ticketMachine.getBalance()
+    returned int 70
+ticketMachine.insertCoin(Coin.TWO_POUNDS);
+Entered £2.00, current balance is £2.70.
+ticketMachine.insertCoin(Coin.TWO_POUNDS);
+Entered £2.00, current balance is £4.70.
+ticketMachine.printTicket("Amersham");
+##################
+# The BlueJ Line
+# Amersham
+# 2020-10-06 at 16:27:26
+# £3.00
+# 
+##################
+
+ticketMachine.refundBalance()
+    returned int 170
+ticketMachine.getBalance()
+    returned int 0

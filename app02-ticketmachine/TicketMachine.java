@@ -1,3 +1,9 @@
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+
 /**
  * TicketMachine models a ticket machine that issues
  * flat-fare tickets.
@@ -9,33 +15,52 @@
  * @author David J. Barnes and Michael Kölling
  * @version 2016.02.29
  * 
- * Modified by Student Name
+ * Modified by Matt Hensman (2020-10-06)
  */
 public class TicketMachine
 {
-    // The price of a ticket from this machine.
-    private int price;
     // The amount of money entered by a customer so far.
-    private int balance;
+    private int balance = 0;
     // The total amount of money collected by this machine.
-    private int total;
+    private int total = 0;
+
+    // Available tickets at this machine
+    private Map<String, Ticket> availableTickets = new HashMap();
 
     /**
      * Create a machine that issues tickets of the given price.
      */
-    public TicketMachine(int cost)
+    public TicketMachine()
     {
-        price = cost;
-        balance = 0;
-        total = 0;
+        this.addTicket(new Ticket("Aylesbury", 220));
+        this.addTicket(new Ticket("Amersham", 300));
+        this.addTicket(new Ticket("High Wycombe", 330));
+    }
+    
+    /**
+     * Adds a ticket to this machine.
+     */
+    private void addTicket(Ticket ticket) {
+        this.availableTickets.put(ticket.getDestination(), ticket);
     }
 
     /**
-     * @Return The price of a ticket.
+     * Format a integer representing pennies to a currency string.
      */
-    public int getPrice()
-    {
-        return price;
+    private String getFormattedPrice(int price) {
+        int pennies = price % 100;
+        return "£" + price / 100 + "." + (pennies < 10 ? "0" + pennies : pennies);
+    }
+
+    /**
+     * Prints all available tickets.
+     */
+    public void printAvailableTickets() {
+        for (Ticket ticket : this.availableTickets.values()) {
+            System.out.printf("Destination: %s\nPrice: %s\n\n",
+                              ticket.getDestination(),
+                              this.getFormattedPrice(ticket.getCost()));
+        }
     }
 
     /**
@@ -53,15 +78,24 @@ public class TicketMachine
      */
     public void insertMoney(int amount)
     {
-        if(amount > 0) 
-        {
-            balance = balance + amount;
-        }
-        else 
-        {
+        if (amount > 0) {
+            this.balance += amount;
+        } else {
             System.out.println("Use a positive amount rather than: " +
                                amount);
         }
+    }
+    
+    /**
+     * Adds the value of a given coin to the balance.
+     */
+    public void insertCoin(Coin coin) {
+        int coinValue = coin.getValue();
+        this.balance += coinValue;
+
+        System.out.printf("Entered %s, current balance is %s.\n",
+                          this.getFormattedPrice(coinValue),
+                          this.getFormattedPrice(this.balance));
     }
 
     /**
@@ -69,28 +103,38 @@ public class TicketMachine
      * reduce the current balance by the ticket price. Print
      * an error message if more money is required.
      */
-    public void printTicket()
+    public void printTicket(String destination)
     {
-        if(balance >= price) 
-        {
+        if (!this.availableTickets.containsKey(destination)) {
+            System.out.println("No such ticket available!");
+            return;
+        }
+        
+        Ticket ticket = this.availableTickets.get(destination);
+        int ticketCost = ticket.getCost();
+
+        if (this.balance >= ticketCost) {
+            // Format date
+            String formattedDate = new SimpleDateFormat(
+                    "yyyy-MM-dd 'at' HH:mm:ss").format(new Date());
+
             // Simulate the printing of a ticket.
             System.out.println("##################");
             System.out.println("# The BlueJ Line");
-            System.out.println("# Ticket");
-            System.out.println("# " + price + " cents.");
+            System.out.println("# " + ticket.getDestination());
+            System.out.println("# " + formattedDate);
+            System.out.println("# " + this.getFormattedPrice(ticketCost));
+            System.out.println("# ");
             System.out.println("##################");
             System.out.println();
 
             // Update the total collected with the price.
-            total = total + price;
+            this.total += ticketCost;
             // Reduce the balance by the price.
-            balance = balance - price;
-        }
-        else 
-        {
+            this.balance -= ticketCost;
+        } else {
             System.out.println("You must insert at least: " +
-                               (price - balance) + " more cents.");
-                    
+                               (ticketCost - this.balance) + " more cents.");
         }
     }
 
@@ -100,9 +144,8 @@ public class TicketMachine
      */
     public int refundBalance()
     {
-        int amountToRefund;
-        amountToRefund = balance;
-        balance = 0;
+        int amountToRefund = this.balance;
+        this.balance = 0;
         return amountToRefund;
     }
 }
