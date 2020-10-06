@@ -1,0 +1,16 @@
+LabClass co452Lab = new LabClass(20);
+Student studentJohn = new Student("John", "0001");
+Student studentLuke = new Student("Luke", "0002");
+Student studentJack = new Student("Jack", "0003");
+co452Lab.setTime("Tuesday 29th September 2020");
+co452Lab.setRoom("G100");
+co452Lab.setInstructor("Nicholas Day");
+co452Lab.enrollStudent(studentJohn);
+co452Lab.enrollStudent(studentLuke);
+co452Lab.enrollStudent(studentJack);
+studentJohn.addCredits(20);
+studentJohn.changeName("Johnny");
+Course courseG400 = new Course("G400", "Computing");
+studentJohn.setCourse(courseG400);
+studentJohn.print();
+Johnny, student ID: 0001, credits: 20, course: Computing (G400)
