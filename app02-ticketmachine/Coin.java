@@ -11,12 +11,19 @@ public enum Coin
     ONE_POUND(100),
     TWO_POUNDS(200);
     
+    // Coin value in pennies
     private final int value;
     
+    /**
+     * Coin constructor
+     */
     private Coin(int value) {
         this.value = value;
     }
 
+    /**
+     * Gets coin value.
+     */
     public int getValue() {
         return this.value;
     }
