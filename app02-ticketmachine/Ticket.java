@@ -4,8 +4,7 @@
  * @author Matt Hensman
  * @version 2020-10-06
  */
-public class Ticket
-{
+public class Ticket {
     // Ticket destination
     private String destination;
     // Ticket cost
@@ -14,8 +13,7 @@ public class Ticket
     /**
      * Constructor for objects of class Ticket
      */
-    public Ticket(String destination, int cost)
-    {
+    public Ticket(String destination, int cost) {
         this.destination = destination;
         this.cost = cost;
     }

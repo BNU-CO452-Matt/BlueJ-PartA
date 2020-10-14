@@ -4,8 +4,7 @@
  * @author Matt Hensman
  * @version 2020-10-06
  */
-public enum Coin
-{
+public enum Coin {
     TEN_PENCE(10),
     TWENTY_PENCE(20),
     ONE_POUND(100),
