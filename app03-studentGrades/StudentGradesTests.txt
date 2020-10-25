@@ -1,4 +1,4 @@
-Student studentJohn = new Student("John", "0001");
+Student studentJohn = new Student("John", "001");
 Course course1 = new Course("Course 1");
 Module module1 = new Module("Module 1", "M1", 25);
 Module module2 = new Module("Module 2", "M2", 50);
@@ -6,7 +6,9 @@ Module module3 = new Module("Module 3", "M3", 75);
 Module module4 = new Module("Module 4", "M4");
 studentJohn.setCourse(course1);
 studentJohn.print();
-Student course contains no modules!
+John (001), Course 1
+Course has no modules.
+
 module1.printDetails();
 Module 1 (M1), mark: 25%
 module2.printDetails();
@@ -21,23 +23,19 @@ course1.addModule(module3);
 course1.addModule(module4);
 course1.printDetails();
 Course 1
+ - Module 1 (M1), mark: 25%
+ - Module 2 (M2), mark: 50%
+ - Module 3 (M3), mark: 75%
+ - Module 4 (M4), mark: 0% (uncompleted)
 
-  Module 1 (M1), mark: 25%
-  Module 2 (M2), mark: 50%
-  Module 3 (M3), mark: 75%
-  Module 4 (M4), mark: 0%
-
-studentJohn.print();
-Student has not completed all modules!
+Total marks: 37
 module4.setMark(100);
-course1.printDetails();
-Course 1
-
-  Module 1 (M1), mark: 25%
-  Module 2 (M2), mark: 50%
-  Module 3 (M3), mark: 75%
-  Module 4 (M4), mark: 100%
-
 studentJohn.print();
-John, student ID: 0001, credits: 60
- Final grade: B
+John (001), Course 1
+ - Module 1 (M1), mark: 25%
+ - Module 2 (M2), mark: 50%
+ - Module 3 (M3), mark: 75%
+ - Module 4 (M4), mark: 100%
+
+Total marks: 62
+Final grade: B
