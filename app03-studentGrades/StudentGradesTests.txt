@@ -28,7 +28,9 @@ Course 1
  - Module 3 (M3), mark: 75%
  - Module 4 (M4), mark: 0% (uncompleted)
 
-Total marks: 37
+Total marks: 150
+Average marks: 37
+
 module4.setMark(100);
 studentJohn.print();
 John (001), Course 1
@@ -37,5 +39,6 @@ John (001), Course 1
  - Module 3 (M3), mark: 75%
  - Module 4 (M4), mark: 100%
 
-Total marks: 62
+Total marks: 250
+Average marks: 62
 Final grade: B

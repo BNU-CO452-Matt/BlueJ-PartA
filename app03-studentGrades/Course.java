@@ -61,7 +61,7 @@ public class Course {
         
         boolean hasUnmarkedModule = false;
         
-        int totalMarks = 0;
+        int marks = 0;
         for (Module module : this.modules) {
             ret += " - " + module;
 
@@ -73,26 +73,28 @@ public class Course {
             }
 
             this.credits += Course.MODULE_CREDITS;
-            totalMarks += module.getMark();
+            marks += module.getMark();
             ret += "\n";
         }
-        
+
+        ret += "\nTotal marks: " + marks;
+
         // Calc average
-        totalMarks /= modules.size();
-        
-        ret += "\nTotal marks: " + totalMarks;
+        marks /= modules.size();
+
+        ret += "\nAverage marks: " + marks;
 
         // Only assign final grade if all modules are complete
         if (!hasUnmarkedModule) {
             // Convert to letter grade
             char finalGrade;
-            if (totalMarks >= 70) {
+            if (marks >= 70) {
                 finalGrade = 'A';
-            } else if (totalMarks >= 60) {
+            } else if (marks >= 60) {
                 finalGrade = 'B';
-            } else if (totalMarks >= 50) {
+            } else if (marks >= 50) {
                 finalGrade = 'C';
-            } else if (totalMarks >= 40) {
+            } else if (marks >= 40) {
                 finalGrade = 'D';
             } else {
                 finalGrade = 'F';
