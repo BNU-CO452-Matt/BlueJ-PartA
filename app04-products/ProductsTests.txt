@@ -1,0 +1,79 @@
+StockDemo stockDem1 = new StockDemo();
+stockDem1.demo();
+Stock list:
+ - Freezer (0), stock level: 0
+ - Fridge (1), stock level: 0
+ - Water Cooler (2), stock level: 0
+ - Cooker (3), stock level: 0
+ - Microwave (4), stock level: 0
+ - Washing Machine (5), stock level: 0
+ - Tumble Dryer (6), stock level: 0
+ - Dishwasher (7), stock level: 0
+ - Air Conditioner (8), stock level: 0
+ - Water Heater (9), stock level: 0
+
+
+Attempt to restock Water Heater with a non-positive amount: -5
+Stock list:
+ - Freezer (0), stock level: 1
+ - Fridge (1), stock level: 6
+ - Water Cooler (2), stock level: 3
+ - Cooker (3), stock level: 4
+ - Microwave (4), stock level: 3
+ - Washing Machine (5), stock level: 2
+ - Tumble Dryer (6), stock level: 1
+ - Dishwasher (7), stock level: 2
+ - Air Conditioner (8), stock level: 6
+ - Water Heater (9), stock level: 0
+
+
+Search results for "water":
+Water Cooler (2), stock level: 3
+Water Heater (9), stock level: 0
+
+
+Freezer (0), stock level: 1
+Freezer (0), stock level: 0
+Water Cooler (2), stock level: 3
+Water Cooler (2), stock level: 2
+Water Heater (9), stock level: 0
+Attempt to sell an out of stock item: Water Heater
+Water Heater (9), stock level: 0
+Water Heater (9), stock level: 0
+Attempt to sell an out of stock item: Water Heater
+Water Heater (9), stock level: 0
+Water Heater (9), stock level: 0
+Attempt to sell an out of stock item: Water Heater
+Water Heater (9), stock level: 0
+Air Conditioner (8), stock level: 6
+Air Conditioner (8), stock level: 5
+Tumble Dryer (6), stock level: 1
+Tumble Dryer (6), stock level: 0
+Tumble Dryer (6), stock level: 0
+Attempt to sell an out of stock item: Tumble Dryer
+Tumble Dryer (6), stock level: 0
+Product with ID: 10 is not recognised.
+Product with ID: 255 is not recognised.
+Stock list:
+ - Freezer (0), stock level: 0
+ - Fridge (1), stock level: 6
+ - Water Cooler (2), stock level: 2
+ - Cooker (3), stock level: 4
+ - Microwave (4), stock level: 3
+ - Washing Machine (5), stock level: 2
+ - Tumble Dryer (6), stock level: 0
+ - Dishwasher (7), stock level: 2
+ - Air Conditioner (8), stock level: 5
+ - Water Heater (9), stock level: 0
+
+
+Low stock list:
+ - Freezer (0), stock level: 0
+ - Water Cooler (2), stock level: 2
+ - Microwave (4), stock level: 3
+ - Washing Machine (5), stock level: 2
+ - Tumble Dryer (6), stock level: 0
+ - Dishwasher (7), stock level: 2
+ - Water Heater (9), stock level: 0
+
+

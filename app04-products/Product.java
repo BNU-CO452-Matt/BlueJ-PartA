@@ -1,11 +1,12 @@
 /**
  * Model some details of a product sold by a company.
  * 
+ * Modified by: Matt Hensman
+ * 
  * @author David J. Barnes and Michael Kölling.
  * @version 2016.02.29
  */
-public class Product
-{
+public class Product {
     // An identifying number for this product.
     private int id;
     // The name of this product.
@@ -19,8 +20,7 @@ public class Product
      * @param id The product's identifying number.
      * @param name The product's name.
      */
-    public Product(int id, String name)
-    {
+    public Product(int id, String name) {
         this.id = id;
         this.name = name;
         quantity = 0;
@@ -29,33 +29,35 @@ public class Product
     /**
      * @return The product's id.
      */
-    public int getID()
-    {
-        return id;
+    public int getID() {
+        return this.id;
     }
 
     /**
      * @return The product's name.
      */
-    public String getName()
-    {
-        return name;
+    public String getName() {
+        return this.name;
+    }
+    
+    public void setName (String name) {
+        this.name = name;
     }
 
     /**
      * @return The quantity in stock.
      */
-    public int getQuantity()
-    {
-        return quantity;
+    public int getQuantity() {
+        return this.quantity;
     }
 
     /**
      * @return The id, name and quantity in stock.
      */
-    public String toString()
-    {
-        return id + ": " +  name + " stock level: " + quantity;
+    @Override
+    public String toString() {
+        return String.format("%s (%d), stock level: %d",
+                             this.name, this.id, this.quantity);
     }
 
     /**
@@ -64,16 +66,12 @@ public class Product
      * @param amount The number of new items added to the stock.
      *               This must be greater than zero.
      */
-    public void increaseQuantity(int amount)
-    {
-        if(amount > 0) 
-        {
-            quantity += amount;
-        }
-        else 
-        {
-            System.out.println("Attempt to restock " + name +
-                               " with a non-positive amount: " + amount);
+    public void increaseQuantity(int count) {
+        if (count > 0)  {
+            this.quantity += count;
+        } else  {
+            System.out.println("Attempt to restock " + this.name +
+                               " with a non-positive amount: " + count);
         }
     }
 
@@ -81,16 +79,12 @@ public class Product
      * Sell one of these products.
      * An error is reported if there appears to be no stock.
      */
-    public void sellOne()
-    {
-        if(quantity > 0) 
-        {
-            quantity--;
-        }
-        else 
-        {
+    public void decreaseQuantity(int count) {
+        if ((this.quantity - count) >= 0)  {
+            this.quantity -= count;
+        } else {
             System.out.println(
-                "Attempt to sell an out of stock item: " + name);
+                "Attempt to sell an out of stock item: " + this.name);
         }
     }
 }
